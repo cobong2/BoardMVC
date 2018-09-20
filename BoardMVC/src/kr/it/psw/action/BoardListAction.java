@@ -16,14 +16,20 @@ public class BoardListAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setPath(Var.TEMPLATE_1);
 
+		int page = 0;
 		BoardListService service = new BoardListService();
 		int btype = Utils.getParamInt(request.getParameter("btype"));
-		ArrayList<BoardVO> data = service.getBoardList(btype);
+		page = Utils.getParamInt(request.getParameter("page"));
+		if (page != 0) {
+		} else {
+			page = 1;
+		}
+		ArrayList<BoardVO> data = service.getPage(btype, page);
 		request.setAttribute("title", Var.TITLES[btype]);
 		request.setAttribute("content", "boardList");
 		request.setAttribute("btype", btype);
 		request.setAttribute("data", data);
-
+		request.setAttribute("count", ((service.getCount(btype)) / 10) + 1);
 		if (DBConnector.getConn() != null) {
 			System.out.println("연결");
 		} else {

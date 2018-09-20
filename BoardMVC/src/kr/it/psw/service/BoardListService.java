@@ -38,4 +38,16 @@ public class BoardListService {
 		BoardDAO.getUpdate(btype, bid, btitle, bcontent);
 
 	}
+
+	public int getCount(int btype) {
+		return BoardDAO.getCount(btype);
+	}
+
+	public ArrayList<BoardVO> getPage(int btype, int page) {
+		ArrayList<BoardVO> result = null;
+		BoardDAO dao = BoardDAO.getInstance();
+		result = dao.getPage(btype, page);
+
+		return result;
+	}
 }

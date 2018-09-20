@@ -42,4 +42,11 @@
 		<a
 			href="http://localhost:8088/BoardMVC/boardRegMod.bo?bid=0&btype=<%=request.getParameter("btype")%>">글쓰기</a>
 	</h5>
+
+	<h5><%for (int i = 1; i <= (int) request.getAttribute("count"); i++) {%>
+		<a href="http://localhost:8088/BoardMVC/boardList.bo?btype=<%=request.getParameter("btype")%>&page=<%=i%>">
+			<%=i%> 
+		</a>
+		<%}%>
+	</h5>
 </div>

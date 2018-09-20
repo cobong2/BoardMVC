@@ -73,9 +73,7 @@ public class BoardFrontControlloer extends HttpServlet {
 				// TODO: 예외처리
 				e.printStackTrace();
 			}
-		}
-
-		else if (comd.equals("/main.bo")) {
+		} else if (comd.equals("/main.bo")) {
 			action = new MainAction();
 			try {
 				forward = action.execute(request, response);
